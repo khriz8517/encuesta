@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    background-color: #f0f5f5;
+}
+.encuesta-section {
+    background-color: #f0f5f5;
+    /* padding: 2em; */
+    font-family: "Nunito", sans-serif;
+}
+.es-title {
+    color: #095db7;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.es-title h3 {
+    margin: 0;
+}
+.es-breadcrumb {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.es-breadcrumb a {
+    color: #4db15a;
+    text-decoration: none;
+}
+
+.es-body {
+    background-color: #fff;
+    padding: 1em 2em;
+    border-radius: 5px;
+}
+
+.esb-questions-panel {
+    padding: 4em 0;
+}
+
+.esb-question {
+    padding: 5px 0;
+}
+
+.esbq-text {
+    color: #095db7;
+    font-size: 16px;
+}
+
+.stars span {
+    color: #ffd221;
+    opacity: 0.5;
+    background: transparent linear-gradient(119deg, #ff850e 0%, #ffd221 100%) 0%
+        0% no-repeat padding-box;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.active,
+.active_imp {
+    opacity: 1 !important;
+}
+
+.row {
+    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
+.col-es-1,
+.col-es-2,
+.col-es-3,
+.col-es-4,
+.col-es-5,
+.col-es-6,
+.col-es-7,
+.col-es-8,
+.col-es-9,
+.col-es-10,
+.col-es-11,
+.col-es-12 {
+    width: 100%;
+}
+
+@media (min-width: 1100px) {
+    .col-es-1 {
+        max-width: 8.333%;
+        flex: 0 0 8.333%;
+    }
+    .col-es-2 {
+        max-width: 16.666%;
+        flex: 0 0 16.666%;
+    }
+    .col-es-3 {
+        max-width: 25%;
+        flex: 0 0 25%;
+    }
+    .col-es-4 {
+        max-width: 33.333%;
+        flex: 0 0 33.333%;
+    }
+    .col-es-5 {
+        max-width: 41.666%;
+        flex: 0 0 41.666%;
+    }
+    .col-es-6 {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+    .col-es-7 {
+        max-width: 58.333%;
+        flex: 0 0 58.333%;
+    }
+    .col-es-8 {
+        max-width: 66.666%;
+        flex: 0 0 66.666%;
+    }
+    .col-es-9 {
+        max-width: 75%;
+        flex: 0 0 75%;
+    }
+    .col-es-10 {
+        max-width: 83.333%;
+        flex: 0 0 83.333%;
+    }
+    .col-es-11 {
+        max-width: 91.666%;
+        flex: 0 0 91.666%;
+    }
+    .col-es-12 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .encuesta-section {
+        padding: 0em;
+    }
+    .es-body {
+        padding: 1em 1em;
+    }
+    .esb-question {
+        padding: 5px 1em;
+    }
+}

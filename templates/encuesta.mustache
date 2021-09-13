@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="./css/encuesta.css" />
+<link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+    rel="stylesheet"
+/>
+
+<div id="app">
+    <div class="encuesta-section">
+        <div class="es-body">
+            <div class="esb-header">
+                <h1>4. Encuesta</h1>
+                <div class="esb-settings"></div>
+            </div>
+            <div class="esb-questions-panel">
+                <div
+                    v-for="(item, index) in preguntas"
+                    class="esb-question row"
+                    :key="item.id"
+                >
+                    <div class="col-es-4"></div>
+                    <div class="esbq-text col-es-3">{( item.pregunta )}</div>
+                    <stars
+                        :id="item.id"
+                        :puntaje="item.puntaje"
+                        class="stars col-es-5"
+                    ></stars>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const sesskey = "{{sesskey}}";
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/encuesta.js"></script>
