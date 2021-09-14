@@ -24,6 +24,7 @@ class mod_encuesta_mod_form extends moodleform_mod {
         // $mform->addElement('text', 'name', get_string('encuestaname', 'encuesta'), array('size'=>'64'));
         $mform->setType('name', PARAM_TEXT);
         $mform->addRule('name', null, 'required', null, 'client');
+        $this->standard_intro_elements();
 
         $this->standard_coursemodule_elements();
 
