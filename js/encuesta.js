@@ -45,6 +45,10 @@ var app = new Vue({
     methods: {
         getPreguntasEncuesta: function () {
             let frm = new FormData();
+            frm.append("cursoid", cursoid);
+            frm.append("coursemoduleid", coursemoduleid);
+            frm.append("module", module);
+            frm.append("sesskey", sesskey);
             frm.append("request_type", "getPreguntasEncuesta");
             axios.post("api/ajax_controller.php", frm).then((res) => {
                 this.preguntas = res.data;

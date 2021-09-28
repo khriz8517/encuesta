@@ -18,7 +18,11 @@ try {
 
 	switch ($_REQUEST['request_type']) {
 		case 'getPreguntasEncuesta':
-			$returnArr = getPreguntasEncuesta();
+			$cursoid = $_REQUEST['cursoid'];
+			$coursemoduleid = $_REQUEST['coursemoduleid'];
+			$module = $_REQUEST['module'];
+			$sesskey = $_REQUEST['sesskey'];
+			$returnArr = getPreguntasEncuesta($cursoid, $coursemoduleid, $module, $sesskey);
 			break;
 		case 'encuestaRespByUser':
 			$id = $_REQUEST['id'];
@@ -47,12 +51,16 @@ exit();
  * ? se deberia excluir las preguntas que ya fueron respondidas?
  * ? se deberia mostrar la puntuacion de la pregunta si ya fue marcada? -- POR DEFECTO
  */
-function getPreguntasEncuesta() {
+function getPreguntasEncuesta($cursoid, $coursemoduleid, $module, $sesskey) {
 	global $DB, $USER;
+	require_sesskey();
 	$not_in = [];
 	$data = [];
 	$if_exists = $DB->get_records('aq_encuesta_user_data', [
-		'userid' => $USER->id
+		'userid' => $USER->id,
+		'course' => $cursoid,
+		'moduleid' => $coursemoduleid,
+		'module' => $module,
 	]);
 	if(count($if_exists)){
 		foreach ($if_exists as $key => $value) {
@@ -67,6 +75,9 @@ function getPreguntasEncuesta() {
 	foreach ($preguntas as $key => $value) {
 		$puntaje = $DB->get_field('aq_encuesta_user_data', 'puntaje', [
 			'userid' => $USER->id,
+			'course' => $cursoid,
+			'moduleid' => $coursemoduleid,
+			'module' => $module,
 			'preg_encuestaid' => $value->id
 		]);
 		array_push($data, [
@@ -91,8 +102,8 @@ function encuestaRespByUser($id, $cursoid, $coursemoduleid, $module, $puntaje, $
 
 	$if_exists = $DB->get_records('aq_encuesta_user_data', [
 		'userid' => $USER->id,
-		'cursoid' => $cursoid,
-		'coursemoduleid' => $coursemoduleid,
+		'course' => $cursoid,
+		'moduleid' => $coursemoduleid,
 		'module' => $module,
 		'preg_encuestaid' => $id,
 	]);
@@ -111,8 +122,8 @@ function encuestaRespByUser($id, $cursoid, $coursemoduleid, $module, $puntaje, $
 		$data = array(
 			'userid' => $USER->id,
 			'preg_encuestaid' => $id,
-			'cursoid' => $cursoid,
-			'coursemoduleid' => $coursemoduleid,
+			'course' => $cursoid,
+			'moduleid' => $coursemoduleid,
 			'module' => $module,
 			'puntaje' => $puntaje,
 			'created_at' => time()

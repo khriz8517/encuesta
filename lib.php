@@ -77,6 +77,9 @@ function encuesta_add_instance($data) {
 
     $data->timecreated = time();
     $data->userid = $USER->id;
+    $data->moduleid = $data->coursemodule;
+    $data->module = $data->module;
+    $data->jsondata = json_encode($data);
 
     $id = $DB->insert_record("encuesta", $data);
     return $id;
