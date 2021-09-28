@@ -23,8 +23,11 @@ try {
 		case 'encuestaRespByUser':
 			$id = $_REQUEST['id'];
 			$puntaje = $_REQUEST['puntaje'];
+			$cursoid = $_REQUEST['cursoid'];
+			$coursemoduleid = $_REQUEST['coursemoduleid'];
+			$module = $_REQUEST['module'];
 			$sesskey = $_REQUEST['sesskey'];
-			$returnArr = encuestaRespByUser($id, $puntaje, $sesskey);
+			$returnArr = encuestaRespByUser($id, $cursoid, $coursemoduleid, $module, $puntaje, $sesskey);
 			break;
 	}
 
@@ -82,12 +85,15 @@ function getPreguntasEncuesta() {
  * @param puntaje es el puntaje de la pregunta
  * @param sesskey es la sesion del usuario
  */
-function encuestaRespByUser($id, $puntaje, $sesskey){
+function encuestaRespByUser($id, $cursoid, $coursemoduleid, $module, $puntaje, $sesskey){
 	global $DB, $USER;
 	require_sesskey();
 
 	$if_exists = $DB->get_records('aq_encuesta_user_data', [
 		'userid' => $USER->id,
+		'cursoid' => $cursoid,
+		'coursemoduleid' => $coursemoduleid,
+		'module' => $module,
 		'preg_encuestaid' => $id,
 	]);
 
@@ -105,6 +111,9 @@ function encuestaRespByUser($id, $puntaje, $sesskey){
 		$data = array(
 			'userid' => $USER->id,
 			'preg_encuestaid' => $id,
+			'cursoid' => $cursoid,
+			'coursemoduleid' => $coursemoduleid,
+			'module' => $module,
 			'puntaje' => $puntaje,
 			'created_at' => time()
 		);

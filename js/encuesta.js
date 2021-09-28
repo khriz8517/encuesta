@@ -12,6 +12,9 @@ Vue.component("stars", {
             frm.append("request_type", "encuestaRespByUser");
             frm.append("id", this.id);
             frm.append("puntaje", numstars);
+            frm.append("cursoid", cursoid);
+            frm.append("coursemoduleid", coursemoduleid);
+            frm.append("module", module);
             frm.append("sesskey", sesskey);
             axios.post("api/ajax_controller.php", frm).then((res) => {
                 console.log(res);

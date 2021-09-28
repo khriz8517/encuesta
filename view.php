@@ -37,6 +37,7 @@ $templateContext = (object)[
     'sesskey' => sesskey(),
     'cursoid' => $cm->course,
     'coursemoduleid' => $id,
+    'module' => $encuesta->module,
     'userid' => $USER->id,
 ];
 
